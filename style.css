@@ -1,0 +1,116 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Londrina Outline", cursive;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  gap: 10rem;
+}
+
+.card {
+  width: 30rem;
+  height: 40rem;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  offset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(hsla(194, 94%, 51%) 0%, hsla(348, 84%, 55%) 100%);
+  filter: blur(3rem);
+  z-index: -1;
+}
+
+.card .face {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: all 2s ease 0s;
+}
+
+.front-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 3.4rem;
+  font-weight: bolder;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 1rem 1rem;
+  padding: 2rem 1rem;
+}
+
+.card .face.front {
+  background: url(bg.jpg);
+  background-size: cover;
+  border-radius: 1rem;
+}
+
+.card .face.second-front {
+  background: url(bg2.jpg);
+  background-size: cover;
+}
+
+.card .face.third-front {
+  background: url(bg3.jpg);
+  background-size: cover;
+}
+
+.card .face.back {
+  background: url(logo.png);
+  background-size: contain;
+  background-color: #000;
+  transform: perspective(50rem) rotateY(180deg);
+  border-radius: 1rem;
+}
+
+.card .face.third-back {
+  transform: perspective(50rem) rotateX(180deg);
+}
+
+.card:hover .face.front {
+  transform: perspective(50rem) rotateY(180deg);
+}
+
+.card:hover .face.second-front {
+  transform: perspective(50rem) rotateX(180deg);
+}
+
+.card:hover .face.third-front {
+  transform: perspective(50rem) rotateX(180deg);
+}
+
+.card:hover .face.back {
+  transform: perspective(50rem) rotateY(360deg);
+}
+
+.card:hover .face.second-back {
+  transform: perspective(50rem) rotateY(360deg);
+}
+
+.card:hover .face.third-back {
+  transform: perspective(50rem) rotateX(360deg);
+}
